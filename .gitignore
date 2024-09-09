@@ -1,0 +1,5 @@
+# Ignore all node_modules folders
+node_modules/
+api/node_modules/
+client/node_modules/
+
