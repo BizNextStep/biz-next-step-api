@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 // Import and use routes
-const leadershipRoutes = require('./src/routes/leadershipRoutes');
-const taskRoutes = require('./src/routes/taskRoutes');
+const leadershipRoutes = require('./routes/leadershipRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 // Register the routes
 app.use('/api/leadership', leadershipRoutes);
@@ -29,4 +29,3 @@ app.use('/api/tasks', taskRoutes);
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
