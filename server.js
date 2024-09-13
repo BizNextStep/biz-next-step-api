@@ -1,18 +1,36 @@
+// In api/src/server.js
 const express = require('express');
-const path = require('path');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const mongoose = require('./api/src/models/db'); // Import the database connection
+
+// Import route files
+const leadershipRoutes = require('./api/src/routes/leadershipRoutes');
+const taskRoutes = require('./api/src/routes/taskRoutes');
+const marketingRoutes = require('./api/src/routes/marketingRoutes');
+const salesRoutes = require('./api/src/routes/salesRoutes');
+const userRoutes = require('./api/src/routes/usersRoutes');
+const leadRoutes = require('./api/src/routes/leadsRoutes');
+
+dotenv.config(); // Load environment variables
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Serve the static files from the dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-// Handle all routes by serving the index.html file from dist
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+// Use routes
+app.use('/api/leadership', leadershipRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/marketing', marketingRoutes);
+app.use('/api/sales', salesRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/leads', leadRoutes);
 
-// Start the app by listening on the default Heroku port
-const PORT = process.env.PORT || 5000;
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
