@@ -1,12 +1,17 @@
-// src/routes/leadershipRoutes.js
-
+// In api/src/routes/leadershipRoutes.js
 const express = require('express');
-const { getLeadershipAdvice } = require('../controllers/leadershipController');
-
 const router = express.Router();
 
-// Define the route for fetching leadership advice
-router.get('/advice', getLeadershipAdvice);
+const leadershipAdvice = [
+  "Lead by example.",
+  "Communicate clearly and effectively.",
+  "Empower your team members.",
+  "Encourage innovation and creativity.",
+];
+
+router.get('/advice', (req, res) => {
+  const randomAdvice = leadershipAdvice[Math.floor(Math.random() * leadershipAdvice.length)];
+  res.json({ advice: randomAdvice });
+});
 
 module.exports = router;
-
