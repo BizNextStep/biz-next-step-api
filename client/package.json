@@ -1,25 +1,28 @@
 {
-  "name": "biz-next-step-api",
+  "name": "biz-next-step-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service serve",  // Starts the Vue development server
+    "build": "vue-cli-service build",  // Builds the project for production
+    "lint": "vue-cli-service lint",  // Runs ESLint to lint your code
+    "test": "vue-cli-service test:unit",  // Runs unit tests (if configured)
+    "clean": "rimraf dist"  // Removes the dist folder (requires rimraf package)
   },
   "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "core-js": "^3.8.3",  // Polyfill for modern JavaScript
+    "vue": "^2.6.14"  // Vue.js core library
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "vue-template-compiler": "^2.6.14"
+    "@babel/core": "^7.12.16",  // Babel compiler core
+    "@babel/eslint-parser": "^7.12.16",  // Babel parser for ESLint
+    "@vue/cli-plugin-babel": "~5.0.0",  // Vue CLI plugin for Babel
+    "@vue/cli-plugin-eslint": "~5.0.0",  // Vue CLI plugin for ESLint
+    "@vue/cli-service": "~5.0.0",  // Vue CLI service for running and building the project
+    "eslint": "^7.32.0",  // ESLint core package
+    "eslint-plugin-vue": "^8.0.3",  // ESLint plugin for Vue.js
+    "vue-template-compiler": "^2.6.14",  // Compiler for Vue templates
+    "rimraf": "^3.0.2"  // Tool to remove folders (for the clean script)
   },
   "eslintConfig": {
     "root": true,
@@ -27,13 +30,13 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "plugin:vue/essential",  // Essential Vue rules
+      "eslint:recommended"  // Recommended ESLint rules
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {}  // Customize ESLint rules here
   },
   "browserslist": [
     "> 1%",
