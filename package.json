@@ -1,17 +1,37 @@
 {
-  "name": "biz-next-step-frontend",
+  "name": "biz-next-step-api",
   "version": "1.0.0",
+  "description": "Full-stack application for Biz Next Step",
+  "main": "src/server.js", // Update this to the correct server file location
   "scripts": {
-    "start": "node server.js",
-    "build": "vue-cli-service build"
+    "start": "node src/server.js",  // Script to start the server
+    "dev": "nodemon src/server.js",  // Script for development mode using nodemon
+    "client": "npm start --prefix client",  // Script to start the frontend
+    "build": "npm run build --prefix client",  // Script to build the frontend
+    "heroku-postbuild": "npm install && npm run build --prefix client"  // Script to build the frontend after deploying to Heroku
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "axios": "^1.0.0",
-    "vue": "^3.0.0"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^7.0.0"  // Add mongoose if using MongoDB
   },
   "devDependencies": {
-    "@vue/cli-service": "^5.0.0"
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BizNextStep/biz-next-step-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BizNextStep/biz-next-step-api/issues"
+  },
+  "homepage": "https://github.com/BizNextStep/biz-next-step-api#readme",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
   }
 }
-
