@@ -1,18 +1,8 @@
-// In api/src/server.js
-
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('./models/db'); // Corrected path for database connection
 const axios = require('axios'); // Import axios for making HTTP requests
-
-// Import route files
-const leadershipRoutes = require('./routes/leadershipRoutes');
-const taskRoutes = require('./routes/taskRoutes');
-const marketingRoutes = require('./routes/marketingRoutes');
-const salesRoutes = require('./routes/salesRoutes');
-const userRoutes = require('./routes/usersRoutes');
-const leadRoutes = require('./routes/leadsRoutes');
 
 dotenv.config(); // Load environment variables
 
@@ -32,6 +22,14 @@ mongoose.connection.on('error', (err) => {
   console.error(`Error connecting to MongoDB: ${err}`);
 });
 
+// Import route files
+const leadershipRoutes = require('./routes/leadershipRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const marketingRoutes = require('./routes/marketingRoutes');
+const salesRoutes = require('./routes/salesRoutes');
+const userRoutes = require('./routes/usersRoutes');
+const leadRoutes = require('./routes/leadsRoutes');
+
 // Use routes
 app.use('/api/leadership', leadershipRoutes);
 app.use('/api/tasks', taskRoutes);
@@ -43,6 +41,10 @@ app.use('/api/leads', leadRoutes);
 // OpenAI API Route
 app.post('/api/gpt', async (req, res) => {
   const userPrompt = req.body.prompt; // Get the prompt from the client
+
+  if (!userPrompt) {
+    return res.status(400).json({ error: 'Prompt is required.' });
+  }
 
   try {
     const response = await axios.post('https://api.openai.com/v1/completions', {
@@ -57,9 +59,13 @@ app.post('/api/gpt', async (req, res) => {
       }
     });
 
-    res.json(response.data);  // Send the GPT response back to the client
+    if (response.data && response.data.choices) {
+      res.json({ response: response.data.choices[0].text.trim() });  // Send the GPT response back to the client
+    } else {
+      res.status(500).json({ error: 'Failed to receive a valid response from OpenAI API.' });
+    }
   } catch (error) {
-    console.error(error);
+    console.error('Error communicating with OpenAI:', error.message);
     res.status(500).json({ error: 'An error occurred while communicating with OpenAI API.' });
   }
 });
@@ -68,6 +74,11 @@ app.post('/api/gpt', async (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
+});
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Welcome to Biz Next Step API!');
 });
 
 // Start the server
