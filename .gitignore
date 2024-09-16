@@ -3,6 +3,8 @@ node_modules/
 
 # Environment variables
 .env
+.env.local
+.env.*.local
 
 # Logs
 logs
@@ -10,13 +12,73 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # IDE and editor files
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
+*.swp
+*.swo
+.history/
+
+# Build output
+dist/
+build/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Debug files
+.node-version
+
+# Yarn integrity file
+.yarn-integrity
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Serverless directories
+.serverless/
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist/
+
+# Gatsby files
+.cache/
+public
+
+# VuePress build output
+.vuepress/dist
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
