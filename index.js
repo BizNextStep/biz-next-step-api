@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const axios = require('axios'); // Import axios for making HTTP requests to the OpenAI API
 
 // Import routes
 const leadershipRoutes = require('./api/src/routes/leadershipRoutes');
@@ -21,6 +22,30 @@ app.use('/api/leadership', leadershipRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/marketing', marketingRoutes);
 app.use('/api/sales', salesRoutes);
+
+// OpenAI GPT Route
+app.post('/api/gpt', async (req, res) => {
+  const userPrompt = req.body.prompt; // Get the prompt from the client
+
+  try {
+    const response = await axios.post('https://api.openai.com/v1/completions', {
+      model: "text-davinci-003",  // Specify the GPT model
+      prompt: userPrompt,
+      max_tokens: 100,
+      temperature: 0.7,
+    }, {
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,  // Use the API key from the environment variable
+        'Content-Type': 'application/json'
+      }
+    });
+
+    res.json(response.data);  // Send the GPT response back to the client
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while communicating with OpenAI API.' });
+  }
+});
 
 // Default route
 app.get('/', (req, res) => {

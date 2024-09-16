@@ -1,39 +1,37 @@
 {
   "name": "biz-next-step-api",
   "version": "1.0.0",
-  "description": "Full-stack application for Biz Next Step",
-  "main": "index.js",  // Update this to point to the correct main entry file at the root
+  "description": "Backend application for Biz Next Step with GPT integration",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js",  // Updated to point to the root 'index.js'
-    "dev": "nodemon index.js",  // Updated for development mode with nodemon
-    "client": "npm start --prefix client",  // Starts the frontend server
-    "build": "npm run build --prefix client",  // Builds the frontend
-    "heroku-postbuild": "npm install && npm run build --prefix client"  // Builds the frontend on Heroku after deployment
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",  // Middleware for handling CORS
-    "dotenv": "^16.4.5",  // For loading environment variables from .env file
-    "express": "^4.21.0",  // Web framework for Node.js
-    "jsonwebtoken": "^8.5.1",  // For JWT-based authentication
-    "pg": "^8.8.0",  // PostgreSQL client for Node.js
-    "mongoose": "^7.0.0"  // Mongoose if you're using MongoDB
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^7.0.0",
+    "pg": "^8.8.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"  // Automatically restarts the server on changes
+    "nodemon": "^2.0.15"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BizNextStep/biz-next-step-api.git"
   },
   "keywords": [],
-  "author": "Your Name",  // Replace with your actual name
+  "author": "Charmaine Mbatha",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BizNextStep/biz-next-step-api/issues"
   },
   "homepage": "https://github.com/BizNextStep/biz-next-step-api#readme",
   "engines": {
-    "node": "20.x",  // Specifies required Node.js version
-    "npm": "10.x"  // Specifies required npm version
+    "node": "20.x",
+    "npm": "10.x"
   }
 }
