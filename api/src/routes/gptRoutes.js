@@ -1,4 +1,3 @@
-// In api/src/routes/gptRoutes.js
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
@@ -25,7 +24,7 @@ async function callOpenAI(prompt) {
 }
 
 // Define the route to interact with GPT
-router.post('/chat', async (req, res) => {
+router.post('/api/gpt', async (req, res) => {
     const { message } = req.body;
 
     try {
@@ -37,4 +36,3 @@ router.post('/chat', async (req, res) => {
 });
 
 module.exports = router;
-
