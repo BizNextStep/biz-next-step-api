@@ -54,31 +54,24 @@ Make sure you have the following installed:
    npm start
    ```
 
-### API Endpoints
+### Summary of API Endpoints
 
-#### Leadership Advice
-- **GET** `/api/leadership/advice`
-  - Returns a random piece of leadership advice.
 
-#### Task Management
-- **GET** `/api/tasks`
-  - Retrieves all tasks.
-  
-- **POST** `/api/tasks`
-  - Creates a new task.
-  - **Request Body**:
-    ```json
-    {
-      "task": "Sample Task",
-      "dueDate": "2024-09-30"
-    }
-    ```
+Endpoint	Method	Description
+/	GET	Check if API is running.
+/api/gpt	POST	Send a prompt to OpenAI.
+/api/leadership/advice	GET	Fetch random leadership advice.
+/api/tasks	GET	Fetch all tasks.
+/api/tasks	POST	Create a new task.
+/api/tasks/:id	PUT	Update a task by ID.
+/api/tasks/:id	DELETE	Delete a task by ID.
+/api/marketing/insights	GET	Fetch marketing insights.
+/api/sales/suggestions	GET	Fetch sales suggestions.
+/api/leads	GET	Fetch all leads.
+/api/leads	POST	Create a new lead.
+/api/users/register	POST	Register a new user.
 
-- **PUT** `/api/tasks/:id`
-  - Updates an existing task.
-  
-- **DELETE** `/api/tasks/:id`
-  - Deletes a specific task.
+
 
 #### User Management
 - **POST** `/api/users/register`
@@ -88,22 +81,7 @@ Make sure you have the following installed:
     {
       "email": "user@example.com",
       "location": "Some Location"
-    }
-    ```
 
-#### Sales Suggestions
-- **GET** `/api/sales/suggestions`
-  - Retrieves sales suggestions.
-
-#### OpenAI GPT Interaction
-- **POST** `/api/gpt`
-  - Sends a prompt to OpenAI's GPT model.
-  - **Request Body**:
-    ```json
-    {
-      "prompt": "Your prompt message here."
-    }
-    ```
 
 ## Testing the API
 
