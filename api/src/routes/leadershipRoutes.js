@@ -1,3 +1,4 @@
+// In api/src/routes/leadershipRoutes.js
 const express = require('express');
 const router = express.Router();
 
@@ -8,7 +9,7 @@ const leadershipAdvice = [
   "Encourage innovation and creativity.",
 ];
 
-router.get('/', (req, res) => {
+router.get('/advice', (req, res) => {
   const randomAdvice = leadershipAdvice[Math.floor(Math.random() * leadershipAdvice.length)];
   res.json({ advice: randomAdvice });
 });
